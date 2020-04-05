@@ -47,7 +47,7 @@ To test the Express server, browse to the URL [http://localhost:5000/](http://lo
 
 A live version of this API can be found by clicking on the following link:
 
-[School Database RESTful API]()
+[School Database RESTful API](https://frozen-sierra-99451.herokuapp.com/)
 
 ## Built With
 
