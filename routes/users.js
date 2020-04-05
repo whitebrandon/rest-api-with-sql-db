@@ -37,7 +37,7 @@ router.post('/', handler.asyncHandler(async (req, res) => {
     }
   });
   await User.create(user);
-  return res.set({ Location: '/' }).status(201).json('User successfully added');
+  return res.set({ Location: '/' }).status(201).send();
 }));
 
 module.exports = router;

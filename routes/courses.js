@@ -57,7 +57,7 @@ router.post('/', handler.authenticateUser, handler.asyncHandler(async (req, res)
   });
   course.userId = req.user.id;
   const newCourse = await Course.create(course);
-  return res.set({ Location: `https://localhost:${process.env.PORT || 5000}/api/courses/${newCourse.id}` }).status(201).json('Course successfully added');
+  return res.set({ Location: `https://localhost:${process.env.PORT || 5000}/api/courses/${newCourse.id}` }).status(201).send();
 }));
 
 router.get('/:id', handler.asyncHandler(async (req, res) => {
