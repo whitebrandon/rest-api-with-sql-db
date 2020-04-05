@@ -67,4 +67,4 @@ typings/
 bin/
 
 # Heroku Procfile
-Procfile
+# Procfile
