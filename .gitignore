@@ -65,3 +65,6 @@ typings/
 
 # bin www file
 bin/
+
+# Heroku Procfile
+Procfile
