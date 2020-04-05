@@ -1,3 +1,10 @@
+/** ****************************************
+Treehouse Techdegree:
+FSJS project 9 - REST API Project
+Name: Brandon White
+Date of Last Modification: 05/04/2019
+***************************************** */
+
 'use strict';
 
 const Sequelize = require('sequelize');
