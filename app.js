@@ -1,12 +1,17 @@
+/** ****************************************
+Treehouse Techdegree:
+FSJS project 9 - REST API Project
+Name: Brandon White
+Date of Last Modification: 05/04/2019
+***************************************** */
+
 'use strict';
 
 // load modules
-const { sequelize } = require('./models');
-const express = require('express');
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
-// const bcryptjs = require('bcryptjs');
-// const auth = require('basic-auth');
+const morgan = require('morgan');
+const express = require('express');
+const { sequelize } = require('./models');
 const userRouter = require('./routes/users');
 const courseRouter = require('./routes/courses');
 
@@ -40,7 +45,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-
 // TODO setup your api routes here
 app.use('/api/users', userRouter);
 app.use('/api/courses', courseRouter);
@@ -60,6 +64,7 @@ app.use((req, res) => {
 });
 
 // setup a global error handler
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   if (enableGlobalErrorLogging) {
     console.error(`Global error handler: ${JSON.stringify(err.stack)}`);
