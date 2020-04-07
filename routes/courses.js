@@ -85,12 +85,12 @@ router.put('/:id', handler.authenticateUser, handler.asyncHandler(async (req, re
   } else {
     createCourseNotFoundError();
   }
-  const validationErrArr = []
+  const validationErrArr = [];
   const userProvidedAttributes = Object.keys(req.body).filter((item) => item === 'title' || 'description');
-  [ 'title', 'description' ].forEach((attribute) => {
+  ['title', 'description'].forEach((attribute) => {
     if (!userProvidedAttributes.includes(attribute)) {
       const error = new Error(`Please provide a value for "${attribute}"`);
-      error.name = 'ValidationError'
+      error.name = 'ValidationError';
       validationErrArr.push(error);
     }
   });
