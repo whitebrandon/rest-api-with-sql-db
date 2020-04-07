@@ -54,21 +54,21 @@ module.exports = {
       } else {
         const error = [];
         if (!user || !user.name) {
-          const noEmail = new Error('Please be sure to include your "emailAddress"');
-          noEmail.name = 'AuthorizationHeaderError';
-          error.push(noEmail);
+          const err = new Error('Not Authorized. "emailAddress" missing.');
+          err.name = 'AuthorizationHeaderError';
+          error.push(err);
         }
         if (!user || !user.pass) {
-          const noPassword = new Error('Please be sure to include your "password"');
-          noPassword.name = 'AuthorizationHeaderError';
-          error.push(noPassword);
+          const err = new Error('Not Authorized. "password" missing.');
+          err.name = 'AuthorizationHeaderError';
+          error.push(err);
         }
         throw error;
       }
     } catch (err) {
       if (Array.isArray(err) && err.filter((item) => item.name === 'AuthorizationHeaderError')) {
         const errMessages = err.map((item) => item.message);
-        return res.status(400).json(errMessages);
+        return res.status(401).json(errMessages);
       }
       res.status(401).json({ errorMsg: err.message });
     }
