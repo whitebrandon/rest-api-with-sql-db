@@ -52,23 +52,13 @@ module.exports = {
           this.createErrorObj('User could not be found with that "emailAddress"', 'User Not Found');
         }
       } else {
-        const error = [];
-        if (!user || !user.name) {
-          const err = new Error('Not Authorized. "emailAddress" missing.');
-          err.name = 'AuthorizationHeaderError';
-          error.push(err);
-        }
-        if (!user || !user.pass) {
-          const err = new Error('Not Authorized. "password" missing.');
-          err.name = 'AuthorizationHeaderError';
-          error.push(err);
-        }
-        throw error;
+        const err = new Error('Not Authorized.');
+        err.name = 'AuthorizationHeaderError';
+        throw err;
       }
     } catch (err) {
-      if (Array.isArray(err) && err.filter((item) => item.name === 'AuthorizationHeaderError')) {
-        const errMessages = err.map((item) => item.message);
-        return res.status(401).json(errMessages);
+      if (err.name === 'AuthorizationHeaderError') {
+        return res.status(401).json(err.message);
       }
       res.status(401).json({ errorMsg: err.message });
     }
