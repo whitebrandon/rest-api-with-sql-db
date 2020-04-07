@@ -21,7 +21,7 @@ sequelize
     console.log('Connection has been established successfully.');
   })
   .then(() => {
-    sequelize.sync();
+    return sequelize.sync();
   })
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
