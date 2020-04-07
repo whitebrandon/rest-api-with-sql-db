@@ -95,7 +95,6 @@ router.put('/:id', handler.authenticateUser, handler.asyncHandler(async (req, re
     }
   });
   if (validationErrArr.length) {
-    // console.log(validationErrArr);
     throw validationErrArr;
   }
   await course.update({

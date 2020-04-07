@@ -30,9 +30,9 @@ module.exports = {
     try {
       const user = auth(req);
       if (user && user.name && user.pass) {
-        const currentUser = await User.findOne({ 
-          where: { emailAddress: user.name }, 
-          attributes: ['id', 'firstName', 'lastName', 'emailAddress', 'password'] 
+        const currentUser = await User.findOne({
+          where: { emailAddress: user.name },
+          attributes: ['id', 'firstName', 'lastName', 'emailAddress', 'password'],
         });
         if (currentUser) {
           if (bcryptjs.compareSync(user.pass, currentUser.password)) {
@@ -43,7 +43,7 @@ module.exports = {
               if (key !== 'password') {
                 req.user[key] = value;
               }
-            })
+            });
             next();
           } else {
             this.createErrorObj('Unauthorized User', 'AuthenticationError');
@@ -86,8 +86,8 @@ module.exports = {
       if (err.name === 'SequelizeValidationError') {
         const errMessages = err.errors.map((item) => item.message);
         res.status(400).json({ errorMsg: errMessages });
-      } else if (err[0].name === 'ValidationError') {
-        res.status(400).json({ errorMsg: err.map((item) => item.message) })
+      } else if (Array.isArray(err) && err[0].name === 'ValidationError') {
+        res.status(400).json({ errorMsg: err.map((item) => item.message) });
       } else if (err.name === 'InvalidEmailAddress') {
         res.status(400).json({ errorMsg: err.message });
       } else if (err.name === 'SequelizeUniqueConstraintError') {
