@@ -1,8 +1,4 @@
-# TECH DEGREE PROJECT #9 | REST API Project
-
-a COURSE BY TREEHOUSE
-
-JS CODE by Brandon White | white.brandonsean@gmail.com
+# REST API Project
 
 A RESTful API created with Express and Sequelize.
 
